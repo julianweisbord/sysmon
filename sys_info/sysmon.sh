@@ -5,8 +5,8 @@ set -e
 #add epoch time
 
 
+printf "\nDate: "
 i=0
-printf "\ndate: "
 for out in $(date)
 do
   i=$((i+1))
@@ -16,30 +16,16 @@ do
     break
   fi
 done
-printf "\n\n\n"
+printf "\n\n"
+printf "Host on: $(uname -a)\n\n"
 
 
 #get rid of some info in lscpu
 lscpu
+#get model name
+for line in $(grep -Fm 1 "$model name" /proc/cpuinfo)
+do
+ printf "$line " 
+done
+printf "\n"
 
-grep -F "$model name" /proc/cpuinfo echo $model
-# for line in "/proc/cpuinfo"
-#do
-#   if[[ grep -q $line model ]]
-#   then
-#       printf $line
-#   fi
-# done
-
-# while read f
-# do
-#   if [[ ]]
-#   echo $f
-#   # for name in $f
-#   # do
-#   #   # if grep -q "$model"
-#   #   # then
-#   #       echo $f
-#   #   # fi
-#   # done
-# done </proc/cpuinfo
