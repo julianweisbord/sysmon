@@ -27,4 +27,5 @@ do
  printf "$line " 
 done
 printf "\n"
-
+#gives number of cpus
+grep -i "physical id" /proc/cpuinfo | sort -u | wc -l
