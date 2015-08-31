@@ -2,8 +2,6 @@
 #user might have to be root for some of these commands
 set -e
 
-#add epoch time
-
 
 printf "\nDate: "
 i=0
@@ -16,6 +14,7 @@ do
     break
   fi
 done
+printf "| Epoch Time: $(date +%s)"
 printf "\n\n"
 printf "Host on: $(uname -a)\n\n"
 
