@@ -21,4 +21,6 @@ sysmon:
 
 Notes:
 
-Linux doesn't seem to have any information about a cpu's microarchitecture codename. There are installable programs that have a database of modern cpu codenames such as likwid but those would have to be updated with each processor release.
+Linux doesn't seem to have any information about a cpu's microarchitecture codename.
+There are installable programs that have a database of modern cpu codenames such as likwid
+ but those would have to be updated with each processor release.
