@@ -57,3 +57,9 @@ free -m
 printf "\nDisk Information:\n"
 printf "=================\n"
 printf "$DISK\n\n"
+
+# motherboard
+printf "Motherboard Information:\n"
+printf "========================\n"
+ sudo dmidecode -t 2 | grep -i "Manufacturer\|Product Name"
+ sudo dmidecode -t 4 | grep -i "Socket"
