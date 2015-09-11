@@ -1,10 +1,7 @@
 #!/bin/bash
-#user might have to be root for some of these commands
+
 set -e
 
-# if [[ -z $(which rdmsr) ]]; then
-#     echo "msr-tools is not installed. Run 'sudo apt-get install msr-tools' to install it." >&2
-# fi
 bold=$(tput bold)
 normal=$(tput sgr0)
 if [ $USER != "root" ]
@@ -44,6 +41,7 @@ printf "Total "
 grep -i "cpu cores" /proc/cpuinfo | sort -u
 lscpu | grep -i "Thread(s) per core:" | sort -u
 lscpu | grep -i "Architecture:\|CPU family:\|CPU MHz\|L1d cache:\|L1i cache:\|L2 cache:\|L3 cache:" | sort -u
+printf "Turbo Boost/Overclock"
 sudo dmidecode -t processor | grep "Max Speed"
 # cat /var/log/dmesg | grep "MHz processor"
 
@@ -63,3 +61,17 @@ printf "Motherboard Information:\n"
 printf "========================\n"
  sudo dmidecode -t 2 | grep -i "Manufacturer\|Product Name"
  sudo dmidecode -t 4 | grep -i "Socket"
+
+ printf "\nTemperatures C: \n"
+ printf "=============\n"
+# sensors | grep Core
+cat /sys/devices/platform/coretemp.0/hwmon/hwmon1/temp1_label \
+/sys/devices/platform/coretemp.0/hwmon/hwmon1/temp1_input \
+/sys/devices/platform/coretemp.0/hwmon/hwmon1/temp2_label \
+/sys/devices/platform/coretemp.0/hwmon/hwmon1/temp2_input \
+/sys/devices/platform/coretemp.0/hwmon/hwmon1/temp3_label \
+/sys/devices/platform/coretemp.0/hwmon/hwmon1/temp3_input \
+/sys/devices/platform/coretemp.0/hwmon/hwmon1/temp4_label \
+/sys/devices/platform/coretemp.0/hwmon/hwmon1/temp4_input \
+/sys/devices/platform/coretemp.0/hwmon/hwmon1/temp5_label \
+/sys/devices/platform/coretemp.0/hwmon/hwmon1/temp5_input \
