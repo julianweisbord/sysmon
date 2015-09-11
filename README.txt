@@ -1,16 +1,16 @@
 sysmon:
 
 1. CPU/Cache:
-  brand, microarchitecture, socket, frequency and overclock or turbo boost, number of cores,
+  brand, microarchitecture, frequency and overclock or turbo boost, number of cores,
   number of threads, cache levels and size, free cache space.
 2. GPU/Integrated Graphics:
   brand, name, frequency and overclock, number of cores.
 3. RAM:
-  brand, name,size, frequency and overclock,
+  brand, name,size, frequency.
 4. Motherboard:
-  brand, name, chip set.
+  brand, name, socket.
 5. Hard Drive:
-  brand, name, type of drive, size, read and write speed
+  brand, name, type of drive, size, read and write speed, space left.
 6. Temperatures:
   CPU, GPU, RAM.
 7. Operating System:
