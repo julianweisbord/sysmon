@@ -59,19 +59,34 @@ printf "$DISK\n\n"
 # motherboard
 printf "Motherboard Information:\n"
 printf "========================\n"
- sudo dmidecode -t 2 | grep -i "Manufacturer\|Product Name"
- sudo dmidecode -t 4 | grep -i "Socket"
+sudo dmidecode -t 2 | grep -i "Manufacturer\|Product Name"
+sudo dmidecode -t 4 | grep -i "Socket"
 
- printf "\nTemperatures C: \n"
- printf "=============\n"
-# sensors | grep Core
-cat /sys/devices/platform/coretemp.0/hwmon/hwmon1/temp1_label \
-/sys/devices/platform/coretemp.0/hwmon/hwmon1/temp1_input \
-/sys/devices/platform/coretemp.0/hwmon/hwmon1/temp2_label \
-/sys/devices/platform/coretemp.0/hwmon/hwmon1/temp2_input \
-/sys/devices/platform/coretemp.0/hwmon/hwmon1/temp3_label \
-/sys/devices/platform/coretemp.0/hwmon/hwmon1/temp3_input \
-/sys/devices/platform/coretemp.0/hwmon/hwmon1/temp4_label \
-/sys/devices/platform/coretemp.0/hwmon/hwmon1/temp4_input \
-/sys/devices/platform/coretemp.0/hwmon/hwmon1/temp5_label \
-/sys/devices/platform/coretemp.0/hwmon/hwmon1/temp5_input \
+printf "\nTemperatures °C: \n"
+printf "=============\n"
+all_hw=(1 2 3 4 5)
+all_temp=(_label _input)
+input_path=/sys/devices/platform/coretemp.0/hwmon/hwmon1/temp
+for num in ${all_hw[*]};
+  do
+    label=""
+    output=""
+    for type in ${all_temp[*]};
+      do
+        file=${input_path}${num}${type}
+        while IFS='' read -r line || [[ -n "$line" ]];
+          do
+            if [[ ${type} == ${all_temp[0]} ]];
+              then
+                label=$line
+            fi
+            if [[ ${type} == ${all_temp[1]} ]];
+              then
+                output=$line
+            fi
+        done < ${file}
+    done;
+    length=${#output}-3
+    echo -e "$label\t${output:0:$length}°"
+
+done;
