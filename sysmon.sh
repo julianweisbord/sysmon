@@ -10,7 +10,11 @@ then
   exit 1
 fi
 
-DISK="$(sudo lshw -short | grep 'disk\|volume')"
+if [[ "$1" = "-a" ]]
+  then
+  DISK="$(sudo lshw -short | grep 'disk\|volume')"
+  GPU="$(sudo lshw -C display | grep 'clock')"
+fi
 
 printf "\nDate: "
 i=0
@@ -55,9 +59,16 @@ free -m
 printf "\nDisk Information:\n"
 printf "=================\n"
 printf "$DISK\n\n"
+# GPU
+printf "GPU Information:\n"
+printf "================\n"
+# lspci -vnn | grep VGA -A 12
+lspci | grep -i "VGA"
+printf "$GPU\n"
+#There is some gpu information at /devices/pci0000:00/0000:00:02.0/graphics/
 
 # motherboard
-printf "Motherboard Information:\n"
+printf "\nMotherboard Information:\n"
 printf "========================\n"
 sudo dmidecode -t 2 | grep -i "Manufacturer\|Product Name"
 sudo dmidecode -t 4 | grep -i "Socket"
