@@ -18,6 +18,10 @@ sysmon:
 8. Time:
   Month/Day/Hour/Minute/Second, EPOCH time
 
+Uses:
+(Assuming you have added this to your path)
+  1. sudo sysmon
+  2. sudo sysmon -a
 
 Notes:
 

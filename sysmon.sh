@@ -14,7 +14,21 @@ if [[ "$1" = "-a" ]]
   then
   DISK="$(sudo lshw -short | grep 'disk\|volume')"
   GPU="$(sudo lshw -C display | grep 'clock')"
+  all(){
+    printf "\nDisk Information:\n"
+    printf "=================\n"
+    printf "$DISK\n\n"
+    # GPU
+    printf "GPU Information:\n"
+    printf "================\n"
+    # lspci -vnn | grep VGA -A 12
+    lspci | grep -i "VGA"
+    printf "$GPU\n"
+    #There is some gpu information at /devices/pci0000:00/0000:00:02.0/graphics/
+  }
+  all
 fi
+
 
 printf "\nDate: "
 i=0
@@ -56,16 +70,7 @@ sudo dmidecode --type 17 | grep -i "DD\|Manufacturer\|Speed" | sort -u
 sudo dmidecode --type memory | more | grep "Maximum Capacity"
 printf "\n"
 free -m
-printf "\nDisk Information:\n"
-printf "=================\n"
-printf "$DISK\n\n"
-# GPU
-printf "GPU Information:\n"
-printf "================\n"
-# lspci -vnn | grep VGA -A 12
-lspci | grep -i "VGA"
-printf "$GPU\n"
-#There is some gpu information at /devices/pci0000:00/0000:00:02.0/graphics/
+
 
 # motherboard
 printf "\nMotherboard Information:\n"
