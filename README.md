@@ -1,7 +1,8 @@
 sysmon:
+---
 
 1. CPU/Cache:
-  brand, microarchitecture, frequency and overclock or turbo boost, number of cores,
+  brand, frequency and overclock or turbo boost, number of cores,
   number of threads, cache levels and size, free cache space.
 2. GPU/Integrated Graphics:
   brand, name, frequency and overclock, number of cores.
@@ -18,10 +19,18 @@ sysmon:
 8. Time:
   Month/Day/Hour/Minute/Second, EPOCH time
 
+Setup:
+  1. Execute in terminal: cd ~ && git clone https://github.com/julianweisbord/sysmon.git
+  2. Execute in terminal: vim ~/.bashrc
+  3. go down to the bottom and Execute in terminal: export PATH="$PATH:~/sysmon/sys_info/sysmon.sh"
+  4. To quit vim, execute: :wq
+  5. Execute in terminal: source ~/.bashrc
+
+
 Uses:
 (Assuming you have added this to your path)
   1. sudo sysmon
-  2. sudo sysmon -a
+  2. sudo sysmon -a //for disk and gpu information (will take a few seconds)
 
 Notes:
 

@@ -26,7 +26,6 @@ if [[ "$1" = "-a" ]]
     printf "$GPU\n"
     #There is some gpu information at /devices/pci0000:00/0000:00:02.0/graphics/
   }
-  all
 fi
 
 
@@ -71,6 +70,10 @@ sudo dmidecode --type memory | more | grep "Maximum Capacity"
 printf "\n"
 free -m
 
+if [[ "$1" = "-a" ]]
+  then
+  all
+fi
 
 # motherboard
 printf "\nMotherboard Information:\n"
