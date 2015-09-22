@@ -18,6 +18,8 @@ sysmon:
   version, developer, kernel, compiler, shell.
 8. Time:
   Month/Day/Hour/Minute/Second, EPOCH time
+9. Network Info:
+    IP Adress
 
 Setup:
   1. Execute in terminal: cd ~ && git clone https://github.com/julianweisbord/sysmon.git
@@ -37,3 +39,5 @@ Notes:
 Linux doesn't seem to have any information about a cpu's microarchitecture codename.
 There are installable programs that have a database of modern cpu codenames such as likwid
  but those would have to be updated with each processor release.
+
+ Doesn't appear to be a way to print amount of cache space currently used.
