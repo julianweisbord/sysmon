@@ -24,11 +24,6 @@ if [[ "$1" = "-a" ]]
     # lspci -vnn | grep VGA -A 12
     lspci | grep -i "VGA"
     printf "$GPU\n"
-    # Network
-    printf "Network\n"
-    printf "========\n"
-    ifconfig | grep -i "inet "
-    printf "\n"
   }
 fi
 
@@ -114,3 +109,9 @@ for num in ${all_hw[*]};
     echo -e "$label\t${output:0:$length}°"
 
 done;
+
+# Network
+printf "Network\n"
+printf "========\n"
+ifconfig | grep -i "inet "
+printf "\n"
