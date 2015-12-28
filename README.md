@@ -24,7 +24,7 @@ sysmon:
 Setup:
   1. Execute in terminal: cd ~ && git clone https://github.com/julianweisbord/sysmon.git
   2. Execute in terminal: vim ~/.bashrc
-  3. go down to the bottom and Execute in terminal: export PATH="$PATH:~/sysmon/sys_info/sysmon.sh"
+  3. go down to the bottom and Execute in vim: PATH="$PATH:~/sysmon/sysmon.sh"
   4. To quit vim, execute: :wq
   5. Execute in terminal: source ~/.bashrc
 
@@ -33,6 +33,7 @@ Uses:
 (Assuming you have added this to your path)
   1. sudo sysmon
   2. sudo sysmon -a //for disk and gpu information (will take a few seconds)
+Note: You may have to edit the sudoers file to allow user defined path variables such as this.
 
 Notes:
 
